@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Maxwells Private Delegate Pool</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://bootswatch.com/4/flatly/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-app="delegateApp" ng-controller="indexCtrl" bgcolor="black">
+        <div class="alert alert-alert">
+           <center>
+                <img src="http://i.imgur.com/opRV8oe.png"><br/>
+ <h1> <font color="black">Maxwells Private Pool, Sharing daily 90% of forged rise.</font></center>
+<div class="alert alert-info"> <h5> <a href="https://dpostools.com/RISE/hybrid_pool" target="_blank"><font color="black">Click here to Check Delegate info</font></a></div>
+        <div class="row">
+               <div class="col-md-4">
+                    <div class="alert alert-info" role="alert"><font color="black">Last payout: {{lastpayout|date}}</font></div>
+                </div>
+                <div class="col-md-8">
+                    <div class="alert alert-info" role="alert"><font color="black">Next payout will be at: {{nextpayout|date}}</font></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="alert alert-info" role="alert"><font color="black">Rank: {{delegate.rank}}</font></div>
+                </div>
+                <div class="col-md-2">
+                    <div class="alert alert-info" role="alert"><font color="black">Approval: {{delegate.approval}}</font></div>
+                </div>
+                <div class="col-md-2">
+                    <div class="alert alert-info" role="alert"><font color="black">Productivity: {{delegate.productivity}}</font></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-info" role="alert"><font color="black">RISE per day to distribute: {{riseperday|number:1}}</font></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="alert alert-info" role="alert"><font color="black">Payout weight: {{weight|number:1}} RISE</font></div>
+                </div>
+            </div>
+
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Address</th>
+			<th>Balance (RISE)</th>
+			<th>Share (%)</th>
+			<th>RISE per day</th>
+                        <th>Paid (RISE)</th>
+                        <th>Pending (RISE)</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="acc in (accounts|orderBy:'-received')">
+                        <td>{{acc.address}}</td>
+			<td>{{acc.balance|number:1}}</td>
+			<td>{{acc.share|number:1}}</td>
+			<td>{{acc.riseperday|number:1}}</td>
+                        <td>{{acc.received|number:1}}</td>
+                        <td>{{acc.pending|number:1}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+            <div align="center">
+                    This software is free software created by Davide Gessa, Forked by Seatrips and Ported to Shift<br>
+                    <a href="https://github.com/seatrips/delegatepool.seatrips.nl">Fork me on Github</a>
+                </div>
+        </div>
+    </body>
+</html>
